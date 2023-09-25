@@ -1,7 +1,7 @@
 from app import app
 from flask import render_template
 
-
+v_count = 0 
 
 # Приветсвеная старничка
 @app.route('/')
@@ -13,12 +13,9 @@ def index():
 def test():
     return render_template("Web.html")
 
-v_count = 0 
 # Счётчик
-'''
 @app.route('/counter')
 def counter():
     global v_count
     v_count += 1
-    return f"Количество запросов = '{v_count}'"
-'''
+    return f"Количество запросов = {v_count}"
