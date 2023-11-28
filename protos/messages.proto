@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+service Shop{
+    rpc GetCateg(ProdCatRequest) returns (ProdCatReply);
+    rpc GetProd(ProdRequest) returns (ProdReply);
+}
+
+message ProdCatRequest {
+    int32 c = 1;
+}
+
+message ProdCatReply {
+    repeated string cat = 1;
+}
+
+message ProdRequest {
+    string category = 1;
+}
+
+message ProdReply {
+    string category = 1;
+    message Price{
+        float pr = 1;
+    }
+    map<string, Price> prod_price = 2;
+}
