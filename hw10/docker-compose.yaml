@@ -1,0 +1,21 @@
+version: "3"
+
+services:
+  server:
+    build: .
+    ports:
+      - "8888:8888"
+    depends_on:
+      - redis
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8888/heartbeat"]
+      interval: 1m30s
+      timeout: 15s
+      retries: 5
+  redis:
+    image: redis:alpine
+    healthcheck:
+      test: ["CMD-SHELL", "redis-cli ping | grep PONG"]
+      interval: 1m30s
+      timeout: 15s
+      retries: 5
