@@ -25,3 +25,6 @@ def counter():
     a = int(r.get('counter'))
     return f"Количество запросов = {a}\n" + f"Время до перезапуска в секундах {r.ttl('counter')}"
 
+@app.route('/heartbeat')
+def heartbeat():
+    return "Я жив"
